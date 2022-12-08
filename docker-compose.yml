@@ -1,0 +1,13 @@
+version: "3.6"
+
+services:
+  react-app:
+    image: ennio/react-app:latest
+    container_name: react-app
+    networks:
+      - react-app-network
+    ports:
+      - 3000:80
+      
+networks:
+  react-app-network:

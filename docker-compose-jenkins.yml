@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  jenkins:
+    image: jenkins/jenkins
+    container_name: jenkins
+    restart: always
+    privileged: true
+    user: root
+    ports:
+      - "8080:8080"
+    networks:
+      - pipeline-network
+    volumes:
+      # mapped volume of jenkins service
+      - 'volume_jenkins:/var/jenkins_home'
+      # mapped volume of docker runner
+      - '/var/run/docker.sock:/var/run/docker.sock'
+
+networks:
+  pipeline-network:
+
+volumes:
+  volume_jenkins:
